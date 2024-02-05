@@ -13,7 +13,7 @@ const timedouticon = ':hourglass:'
 const notworkingicon = ':x:';
 const waitingicon = ':arrows_counterclockwise:';
 
-const legenda = `${workingicon} - Serwer działa poprawnie\n${timedouticon} - Serwer nie odpowiada\n${notworkingicon} - Nieoczekiwana odpowiedź serwera`;
+const info = `${workingicon} - Serwer działa poprawnie\n${timedouticon} - Serwer nie odpowiada\n${notworkingicon} - Nieoczekiwana odpowiedź serwera`;
 
 
 const urlsToCheck = [
@@ -155,7 +155,7 @@ client.on('interactionCreate', async (interaction) => {
     
     embed.addFields({
         name: 'Legenda:',
-        value: legenda
+        value: info
     });
     
     const initialResponse = await interaction.reply({ embeds: [embed], ephemeral: false });
@@ -219,7 +219,7 @@ client.on('interactionCreate', async (interaction) => {
     
         updatedEmbed.addFields({
             name: 'Legenda:',
-            value: legenda
+            value: info
         });
     
         await initialResponse.edit({ embeds: [updatedEmbed] });
@@ -261,7 +261,7 @@ client.on('interactionCreate', async (interaction) => {
 
     finalEmbed.addFields({
         name: 'Legenda:',
-        value: legenda
+        value: info
     });
     
     await initialResponse.edit({ embeds: [finalEmbed] });
