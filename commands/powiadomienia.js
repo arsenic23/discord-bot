@@ -12,6 +12,6 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: 'Vulcanova', iconURL: client.user.displayAvatarURL() });
 
-        await interaction.reply({ embeds: [embed]});
+        await interaction.reply({ embeds: [embed], ephemeral: true });
     },
 };
