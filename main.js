@@ -3,7 +3,12 @@ const { REST, Routes, Client, GatewayIntentBits, Collection } = require('discord
 const fs = require('fs');
 const path = require('path');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const phrasesFilePath = path.resolve(__dirname, 'automod/phrases.json');
+const phrasesData = JSON.parse(fs.readFileSync(phrasesFilePath, 'utf8'));
+const phraseCommands = phrasesData.phraseCommands;
+const additionalKeywords = phrasesData.additionalKeywords;
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
 const config_token = process.env.BOT_TOKEN;
 
@@ -38,8 +43,41 @@ client.on('interactionCreate', async (interaction) => {
         await command.execute(interaction, client);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'Nie udało sie wywołac komendy.', ephemeral: true });
+        await interaction.reply({ content: 'Nie udało się wywołać komendy.', ephemeral: true });
     }
 });
+
+client.on('messageCreate', async (message) => {
+    if (message.author.bot) return;
+
+    const contentLower = message.content.toLowerCase(); 
+    let additionalKeywordFound = false;
+
+    for (const keyword of additionalKeywords) {
+        if (contentLower.includes(keyword)) {
+            additionalKeywordFound = true;
+            break; 
+        }
+    }
+
+    if (additionalKeywordFound) {
+        for (const [commandName, phrases] of Object.entries(phraseCommands)) {
+            for (const phrase of phrases) {
+                if (contentLower.includes(phrase.toLowerCase())) {
+                    const command = client.commands.get(commandName);
+                    if (command) {
+                        try {
+                            await command.execute(message, client);
+                        } catch (error) {
+                            console.error(error);
+                        }
+                        return; 
+                    }
+                }
+            }
+        }
+    }
+});
+
 
 client.login(config_token);
