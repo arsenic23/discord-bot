@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pobierz')
-        .setDescription('Link do pobrania Vulcanovy na IOS'),
+        .setDescription('Link do pobrania Vulcanovej na iOS'),
     async execute(interaction, client) {
             const embed = new EmbedBuilder()
             .setTitle('Vulcanova na App Store')
