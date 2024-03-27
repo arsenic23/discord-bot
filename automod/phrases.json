@@ -1,0 +1,27 @@
+{
+  "phraseCommands": {
+    "powiadomienia": ["powiadomienia", "powiadomień", "powiadomien"],
+    "android": ["android"],
+    "pobierz": [
+      "pobrać",
+      "pobrac",
+      "pobierz",
+      "pobrania",
+      "zainstalowac",
+      "zainstalować"
+    ]
+  },
+  "additionalKeywords": [
+    "kiedy",
+    "będzie",
+    "bedzie",
+    "włączyć",
+    "wlaczyc",
+    "dostępny",
+    "dostepny",
+    "pobrać",
+    "pobrac",
+    "ogarnąć",
+    "ogarnac"
+  ]
+}
