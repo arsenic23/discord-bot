@@ -8,13 +8,13 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle("Vulcanova na Androidzie")
       .setDescription(
-        "Niestety, Vulcanova na Androidzie może się nigdy nie pojawić. Wynika to z kilku przyczyn. Najważniejszą jest brak czasu — Vulcanova to projekt tworzony po godzinach i nie ma czasu na napisanie praktycznie całej aplikacji od nowa.",
+        "Niestety, obecnie Vulcanova nie posiada wersji na platformę Android. Twórca aplikacji nie ma aktualnie możliwości czasowych, by rozwijać i wspierać wersję na Androida. Chociaż kod na Androida się kompiluje, to aby aplikacja mogła się w ogóle uruchomić i działać poprawnie, trzeba by poświęcić sporą ilość czasu na napisanie brakujących implementacji komponentów. Niestety, ze względu na ograniczenia czasowe, autor nie jest w stanie tego zrobić.",
       )
       .setColor("#0c79c7")
       .addFields({
         name: "Alternatywna aplikacja",
         value:
-          "Możesz zapoznać się z aplikacją naszej zaprzyjaźnionej konkurencji — Wulkanowy, która dostępna jest na Androidzie! Dołącz na jej serwer Discord używając tego [linku](https://discord.gg/Uk3pgVSB2y).",
+          "Polecamy aplikację Wulkanowy, która działa na Androidzie. Możesz znaleźć ją w [Google Play](https://play.google.com/store/apps/details?id=io.github.wulkanowy).",
       })
       .setTimestamp()
       .setFooter({
